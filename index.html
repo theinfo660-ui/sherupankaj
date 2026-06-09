@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Telegram Landing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#020617;
+  --cyan:#00eaff;
+  --purple:#7b2cff;
+  --white:#ffffff;
+  --gray:#bfc8d8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+
+  background:
+  radial-gradient(circle at top,
+  #0b2447 0%,
+  #020617 40%,
+  #000000 100%);
+}
+
+/* MAIN CONTAINER */
+
+.container{
+  width:100%;
+  max-width:420px;
+
+  padding:35px 25px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(0,234,255,0.35);
+
+  backdrop-filter:blur(14px);
+
+  box-shadow:
+  0 0 15px rgba(0,234,255,0.15),
+  0 0 35px rgba(0,234,255,0.08),
+  inset 0 0 20px rgba(255,255,255,0.02);
+
+  text-align:center;
+
+  position:relative;
+
+  animation:
+  fadeUp 1s ease,
+  borderGlow 4s infinite alternate;
+}
+
+/* GLOW BORDER */
+
+.container::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:28px;
+
+  padding:1px;
+
+  background:
+  linear-gradient(135deg,
+  rgba(0,234,255,0.9),
+  rgba(123,44,255,0.4),
+  rgba(0,234,255,0.9));
+
+  -webkit-mask:
+  linear-gradient(#fff 0 0) content-box,
+  linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  pointer-events:none;
+}
+
+/* PROFILE */
+
+.profile-img{
+  width:120px;
+  height:120px;
+
+  border-radius:50%;
+  object-fit:cover;
+
+  border:3px solid var(--cyan);
+
+  box-shadow:
+  0 0 15px var(--cyan),
+  0 0 40px rgba(0,234,255,0.6);
+
+  animation:pulse 2.5s infinite;
+}
+
+/* ========================= */
+/* CHANGE IMAGE HERE 🔥 */
+/* ========================= */
+
+/*
+REPLACE IMAGE LINK BELOW
+
+https://i.imgur.com/8Km9tLL.png
+
+WITH YOUR OWN IMAGE LINK
+*/
+
+/* LIVE COUNTER */
+
+.live-counter{
+  margin-top:14px;
+
+  color:var(--cyan);
+
+  font-size:14px;
+  font-weight:600;
+
+  text-shadow:0 0 10px rgba(0,234,255,0.7);
+}
+
+/* NAME */
+
+.name{
+  margin-top:18px;
+
+  color:white;
+
+  font-size:30px;
+  font-weight:700;
+
+  text-align:center;
+
+  text-shadow:
+  0 0 12px rgba(0,234,255,0.6);
+}
+
+/* EXTRA BUTTON */
+
+.top-btn{
+  margin-top:18px;
+}
+
+/* BUTTONS */
+
+.buttons{
+  margin-top:28px;
+
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.btn{
+  display:block;
+
+  text-decoration:none;
+
+  padding:15px 20px;
+
+  border-radius:50px;
+
+  color:white;
+
+  font-weight:600;
+
+  transition:0.35s ease;
+
+  background:
+  linear-gradient(135deg,var(--cyan),var(--purple));
+
+  box-shadow:
+  0 0 18px rgba(0,234,255,0.35);
+}
+
+.btn:hover{
+  transform:scale(1.05);
+
+  box-shadow:
+  0 0 22px rgba(0,234,255,0.8),
+  0 0 45px rgba(123,44,255,0.5);
+}
+
+/* FEATURES */
+
+.features{
+  margin-top:30px;
+  text-align:left;
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  color:var(--gray);
+
+  animation:fadeUp 1s ease;
+}
+
+.icon{
+  font-size:20px;
+
+  filter:
+  drop-shadow(0 0 6px rgba(0,234,255,0.8));
+}
+
+/* DESCRIPTION */
+
+.description{
+  margin-top:26px;
+
+  color:#d2d9e4;
+
+  line-height:1.7;
+}
+
+/* QUOTE */
+
+.quote{
+  margin-top:28px;
+
+  color:#b9c1d0;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+/* BADGE */
+
+.badge{
+  margin-top:28px;
+
+  padding:14px;
+
+  border-radius:18px;
+
+  border:1px solid rgba(0,234,255,0.25);
+
+  background:rgba(255,255,255,0.02);
+
+  color:#d7deeb;
+
+  font-size:13px;
+}
+
+.badge a{
+  color:var(--cyan);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* =============================== */
+/* CHANGE ADVERTISE LINK HERE 🔥 */
+/* =============================== */
+
+/*
+REPLACE # BELOW WITH YOUR LINK
+
+Example:
+https://t.me/yourchannel
+*/
+
+/* FOOTER */
+
+.footer{
+  margin-top:22px;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+  color:rgba(255,255,255,0.45);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes pulse{
+  0%{
+    box-shadow:
+    0 0 10px var(--cyan),
+    0 0 25px rgba(0,234,255,0.4);
+  }
+
+  50%{
+    box-shadow:
+    0 0 20px var(--cyan),
+    0 0 45px rgba(0,234,255,0.9);
+  }
+
+  100%{
+    box-shadow:
+    0 0 10px var(--cyan),
+    0 0 25px rgba(0,234,255,0.4);
+  }
+}
+
+@keyframes borderGlow{
+  from{
+    box-shadow:
+    0 0 10px rgba(0,234,255,0.12),
+    0 0 25px rgba(0,234,255,0.06);
+  }
+
+  to{
+    box-shadow:
+    0 0 18px rgba(0,234,255,0.25),
+    0 0 40px rgba(0,234,255,0.15);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+  .name{
+    font-size:25px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- PROFILE IMAGE -->
+
+  <!-- ===================== -->
+  <!-- CHANGE IMAGE HERE 🔥 -->
+  <!-- ===================== -->
+
+  <img
+    src="https://i.imgur.com/8Km9tLL.png"
+    class="profile-img"
+    alt="Profile"
+  >
+
+  <!-- LIVE COUNTER -->
+
+  <div class="live-counter">
+    🔴 Live Traders: <span id="counter">876</span>
+  </div>
+
+  <!-- NAME -->
+
+  <div class="name">
+    PANKAJ BHARDWAJ
+  </div>
+
+  <!-- EXTRA BUTTON -->
+
+  <div class="top-btn">
+
+    <!-- ============================ -->
+    <!-- CHANGE FIRST BUTTON LINK 🔥 -->
+    <!-- ============================ -->
+
+    <a href="#" class="btn">
+      WATCH FREE SESSION
+    </a>
+
+  </div>
+
+  <!-- FEATURES -->
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="icon">🌐</div>
+      <div>Learning & Educational Sessions</div>
+    </div>
+
+    <div class="feature">
+      <div class="icon">📊</div>
+      <div>Market Concepts & Awareness</div>
+    </div>
+
+    <div class="feature">
+      <div class="icon">💎</div>
+      <div>Chart Reading Concepts</div>
+    </div>
+
+    <div class="feature">
+      <div class="icon">💻</div>
+      <div>Educational Case Discussions</div>
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION -->
+
+  <div class="description">
+    Join our learning community and grow your knowledge
+  </div>
+
+  <!-- SECOND BUTTON -->
+
+  <div class="buttons">
+
+    <!-- =============================== -->
+    <!-- CHANGE TELEGRAM BUTTON LINK 🔥 -->
+    <!-- =============================== -->
+
+    <a href="#" class="btn">
+      JOIN TELEGRAM
+    </a>
+
+  </div>
+
+  <!-- QUOTE -->
+
+  <div class="quote">
+    नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।
+  </div>
+
+  <!-- BADGE -->
+
+  <div class="badge">
+
+    This Channel Advertise By
+
+    <!-- ================================= -->
+    <!-- CHANGE ADVERTISE LINK HERE 🔥 -->
+    <!-- ================================= -->
+
+    <a href="#">
+      SNOW AGENCY
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    Terms | Privacy | Disclaimer <br>
+    This site is not part of Facebook™ or endorsed by Facebook™.
+  </div>
+
+</div>
+
+<script>
+
+/* LIVE COUNTER */
+
+let count = 876;
+
+setInterval(() => {
+
+  count += Math.floor(Math.random() * 3);
+
+  document.getElementById("counter").innerText = count;
+
+}, 3000);
+
+</script>
+
+</body>
+</html>
